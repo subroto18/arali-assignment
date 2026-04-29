@@ -12,10 +12,9 @@ const Button: React.FC<Props> = ({
   ...props
 }) => {
   const baseStyles = "bg-primary text-white px-4 py-2 rounded transition";
-
   const stateStyles = loading
     ? "opacity-70 cursor-not-allowed"
-    : "hover:bg-blue-700 cursor-pointer";
+    : "hover:bg-primary-600 cursor-pointer";
 
   return (
     <button

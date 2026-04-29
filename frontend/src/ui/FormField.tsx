@@ -10,12 +10,12 @@ const FormField: React.FC<Props> = ({ label, error, ...inputProps }) => {
   return (
     <div className="space-y-1">
       {label && (
-        <label className="text-sm font-medium text-gray-700">{label}</label>
+        <label className="text-sm font-medium text-neutral-700">{label}</label>
       )}
 
       <Input {...inputProps} />
 
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-danger text-sm">{error}</p>}
     </div>
   );
 };

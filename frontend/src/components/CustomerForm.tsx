@@ -2,41 +2,39 @@ import { useState } from "react";
 import Button from "../ui/Button";
 import { customerSchema } from "../schemas/customerSchema";
 import FormField from "../ui/FormField";
+import { CUSTOMER_FORM_FIELDS } from "../config/customerForm.config";
 
-const CustomerForm = ({ onAdd }) => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
+const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const result = customerSchema.safeParse(form);
+    const result = customerSchema.safeParse(formData);
 
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
 
-      setErrors({
-        name: fieldErrors.name?.[0] || "",
-        email: fieldErrors.email?.[0] || "",
-        phone: fieldErrors.phone?.[0] || "",
-      });
+      const formattedErrors = Object.keys(formData).reduce(
+        (acc, key) => {
+          acc[key] = fieldErrors[key]?.[0] || "";
+          return acc;
+        },
+        {} as Record<string, string>,
+      );
 
+      setErrors(formattedErrors);
       return;
     }
 
     setErrors({});
-    onAdd(form);
+    onAdd(formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setForm((prev) => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -46,57 +44,60 @@ const CustomerForm = ({ onAdd }) => {
 
   const validateField = (name: string, value: string) => {
     const result = customerSchema.safeParse({
-      ...form,
+      ...formData,
       [name]: value,
     });
 
-    if (!result.success) {
-      const fieldErrors = result.error.flatten().fieldErrors;
+    const fieldErrors = result.success
+      ? ""
+      : result.error.flatten().fieldErrors[name]?.[0] || "";
 
-      setErrors((prev) => ({
-        ...prev,
-        [name]: fieldErrors[name]?.[0] || "",
-      }));
-    } else {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
+    setErrors((prev) => ({
+      ...prev,
+      [name]: fieldErrors,
+    }));
+  };
+
+  const handleReset = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+    });
+    setErrors({});
   };
 
   return (
-    <>
-      <h3 className="text-lg font-semibold mb-4">Add Customer</h3>
+    <div className="w-full max-w-md mx-auto p-5">
+      <h3 className="text-xl font-semibold mb-5 text-gray-800">Add Customer</h3>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <FormField
-          label="Name"
-          placeholder="Enter name"
-          value={form.name}
-          onChange={handleChange}
-          error={errors.name}
-        />
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {CUSTOMER_FORM_FIELDS.map((field) => (
+          <FormField
+            key={field.name}
+            label={field.label}
+            name={field.name}
+            placeholder={field.placeholder}
+            value={formData[field.name]}
+            onChange={handleChange}
+            error={errors[field.name]}
+          />
+        ))}
 
-        <FormField
-          label="Email"
-          placeholder="Enter email"
-          value={form.email}
-          onChange={handleChange}
-          error={errors.email}
-        />
-
-        <FormField
-          label="Phone"
-          placeholder="Enter phone"
-          value={form.phone}
-          onChange={handleChange}
-          error={errors.phone}
-        />
-
-        <Button type="submit">Submit</Button>
+        <div className="flex gap-3 pt-2">
+          <Button
+            type="button"
+            onClick={handleReset}
+            className="flex-1 bg-gray-400 text-gray-700 hover:bg-gray-200"
+          >
+            Reset
+          </Button>
+          <Button type="submit" loading={loading} className="flex-1">
+            Submit
+          </Button>
+        </div>
       </form>
-    </>
+    </div>
   );
 };
 

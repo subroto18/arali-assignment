@@ -13,16 +13,12 @@ const addCustomer = asyncHandler((req, res) => {
     email,
     phone,
   };
-
-  console.log(newCustomer, "newCustomer");
   db.addCustomer(newCustomer);
-
   sendResponse(res, 201, "Customer created successfully", newCustomer);
 });
 
 const getCustomers = asyncHandler((req, res) => {
   const customers = db.getCustomers();
-  res.json(customers);
   sendResponse(res, 200, "Customers fetched successfully", customers);
 });
 

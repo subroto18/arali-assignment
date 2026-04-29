@@ -1,18 +1,14 @@
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
-import Dashboard from "./pages/HomePage";
+import AppRouter from "./routes/AppRouter";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
-      <Header />
-
-      <main className="flex-1 p-6">
-        <Dashboard />
-      </main>
-
-      <Footer />
-    </div>
+    <ErrorBoundary>
+      <AppRouter />
+      <ToastContainer />
+    </ErrorBoundary>
   );
 }
 

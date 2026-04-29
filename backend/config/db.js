@@ -3,6 +3,7 @@ let customers = [];
 
 const db = {
   getCustomers: () => customers,
+
   addCustomer: (customer) => {
     customers.push(customer);
     return customer;

@@ -1,96 +1,44 @@
-# Customer Management Dashboard (Fullstack)
+# 🚀 Customer Management System
 
-A simple full stack CRUD application to manage customers.
-This project demonstrates clean backend architecture, modular routing, and consistent API design.
-
----
-
-## 🧱 Project Structure
-
-```
-FULL-STACK CRUD PROJECT/
-├── backend/     # Node.js + Express API
-├── frontend/    # React Frontend
-└── README.md
-```
+A full-stack application for managing customers with a modern frontend and a scalable backend API.
 
 ---
 
-## 🚀 Features
+## 📦 Projects
 
-- Add new customer
-- View all customers
-- Delete customer
-- Form validation (email, phone)
-- Global error handling
-- Health check endpoint
-- Clean API response structure
+### 🎨 Frontend
+
+React + TypeScript dashboard for managing customers with a clean UI.
+
+👉 [View Frontend README](./frontend/README.md)
 
 ---
 
-## ⚙️ Tech Stack
+### ⚙️ Backend
 
-### Backend
+Node.js + Express REST API with validation and error handling.
 
-- Node.js
-- Express.js
-
-### Frontend
-
-- React.js
+👉 [View Backend README](./backend/README.md)
 
 ---
 
-## ▶️ Getting Started
+## 🧠 Overview
 
-### 1. Clone the repo
-
-```
-git clone <your-repo-url>
-cd customer-dashboard
-```
+- Create, view, and delete customers
+- Clean architecture (frontend + backend separation)
+- Scalable and production-ready structure
+- Designed for learning and real-world practices
 
 ---
 
-### 2. Run Backend
+## 🚀 Getting Started
 
-```
-cd allbackend
-npm install
-npm run dev
-```
-
-Server runs on:
-
-```
-http://localhost:8000
-```
+1. Setup backend → follow backend README
+2. Setup frontend → follow frontend README
+3. Run both servers and start using the app
 
 ---
 
-### 3. Run Frontend
+## 👨‍💻 Author
 
-```
-cd allfrontend
-npm install
-npm run dev
-```
-
----
-
-## 🔗 API Base URL
-
-```
-http://localhost:8000/api/v1
-```
-
----
-
-## 📌 Notes
-
-- Data is stored in-memory (no database used)
-- Server restart will reset data
-- Designed for learning and demonstration purposes
-
----
-# arali-assignment
+Built as part of a Full Stack Developer assignment.

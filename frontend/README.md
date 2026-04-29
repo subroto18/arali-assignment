@@ -1,73 +1,207 @@
-# React + TypeScript + Vite
+# 🚀 Customer Management Dashboard (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript frontend application for managing customers.
+This project is part of a full-stack assignment where users can **create, view, and delete customers** using a clean and responsive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🧠 Tech Stack
 
-## React Compiler
+- ⚛️ React (with Vite)
+- 🔷 TypeScript
+- 🎨 Tailwind CSS
+- 🔁 React Router
+- 📡 Axios (API calls)
+- 🔔 React Toastify (notifications)
+- ✅ Zod (form validation)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✅ Customer Management
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Add new customers via form
+- View customers in a responsive table
+- Delete customers with confirmation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### ✅ UX & UI Enhancements
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Toast notifications for success & error
+- Loading states (create, delete, fetch)
+- Error handling with global error boundary
+- 404 Not Found page
+- Clean dashboard layout (Header + Footer + Content)
+
+### ✅ Form Handling
+
+- Real-time validation using Zod
+- Field-level error messages
+- Reusable form field components
+
+### ✅ Architecture
+
+- Custom hooks for API & state management
+- Config-driven UI (table & form fields)
+- Clean separation of concerns
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+ ├── assets/         # Static files
+ ├── components/     # Reusable components (Header, Footer, Table, etc.)
+ ├── config/         # Config files (table columns, form fields)
+ ├── hooks/          # Custom hooks (useCustomers, useToast)
+ ├── pages/          # Page components (HomePage, NotFound)
+ ├── routes/         # Routing configuration
+ ├── schemas/        # Zod validation schemas
+ ├── services/       # API calls (Axios)
+ ├── types/          # TypeScript types
+ ├── ui/             # Reusable UI components (Button, Input, FormField)
+ ├── App.tsx         # Root component
+ ├── main.tsx        # Entry point
+ └── index.css       # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔗 Routing
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `/` → Home (Customer Dashboard)
+- `*` → 404 Not Found page
+
+---
+
+## 📡 API Integration
+
+The frontend connects to backend APIs:
+
+- `GET /customers` → Fetch customers
+- `POST /customers` → Add customer
+- `DELETE /customers/:id` → Delete customer
+
+Base URL is configured using environment variables:
+
 ```
+VITE_API_BASE_URL=http://localhost:8000/api/v1
+```
+
+---
+
+## 🧩 Custom Hooks
+
+### `useCustomers`
+
+Handles:
+
+- Fetching customers
+- Creating customer
+- Deleting customer
+- Loading & error state
+
+### `useToast`
+
+Handles:
+
+- Success notifications
+- Error notifications
+- API error parsing
+
+---
+
+## ✅ Validation (Zod)
+
+- Name → required
+- Email → valid format
+- Phone → numeric & minimum length
+
+Validation runs:
+
+- On submit
+- On change (field-level)
+
+---
+
+## 🧨 Error Handling
+
+### Global Error Boundary
+
+- Catches UI crashes
+- Shows fallback UI
+
+### API Error Handling
+
+- Centralized via `useToast`
+- Uses safe parsing (`unknown` type)
+
+---
+
+## 🎨 UI Highlights
+
+- Responsive table with scroll
+- Sticky table header
+- Modern button with loading state
+- Reusable form fields
+- Clean dashboard layout
+
+---
+
+## ⚙️ Setup & Run
+
+### 1. Install dependencies
+
+```
+npm install
+```
+
+### 2. Setup environment
+
+Create `.env` file:
+
+```
+VITE_API_BASE_URL=http://localhost:8000/api/v1
+```
+
+### 3. Run project
+
+```
+npm run dev
+```
+
+---
+
+## 🧠 Key Learnings / Concepts Used
+
+- Custom Hooks for state & API abstraction
+- Separation of UI and data layer
+- Type-safe error handling (`unknown`)
+- Config-driven UI (scalable pattern)
+- Controlled forms with validation
+- Global error handling strategy
+
+---
+
+## 🚀 Future Improvements
+
+- Pagination / infinite scroll
+- Edit customer feature
+- Authentication (protected routes)
+- React Query / TanStack Query integration
+- Better UI (sidebar dashboard)
+
+---
+
+## 📌 Notes
+
+- Uses in-memory backend (no database)
+- Designed with scalability in mind
+- Follows industry-level folder structure
+
+---
+
+## 👨‍💻 Author
+
+Built as part of a Full Stack Developer assignment.

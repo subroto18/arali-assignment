@@ -1,32 +1,45 @@
-# Backend - Customer API
+# 🚀 Customer API (Backend)
 
-A simple REST API built using Node.js and Express for managing customers.
-
----
-
-## 📁 Folder Structure
-
-```
-allbackend/
-├── controllers/
-├── routes/
-│   └── v1/
-├── middleware/
-├── utils/
-├── config/
-├── server.js
-```
+A simple **Node.js + Express** REST API for managing customers.
+Built with clean architecture, validation, and centralized error handling.
 
 ---
 
-## 🚀 Features
+## 🧠 Tech Stack
 
-- RESTful API design
+- Node.js
+- Express
+- UUID
+- Dotenv
+- CORS
+- Nodemon
+
+---
+
+## ✨ Features
+
+- RESTful API structure
 - In-memory data storage
-- Custom error handling (AppError)
-- Global error middleware
-- Request validation
+- Request validation middleware
+- Global error handling
+- Custom error class (`AppError`)
+- Standardized API responses
 - Health check endpoint
+
+---
+
+## 📁 Project Structure
+
+```bash
+backend/
+├── config/         # DB & environment config
+├── controllers/    # Business logic
+├── middleware/     # Validation & error handling
+├── routes/         # API routes (v1)
+├── utils/          # Helpers (errors, responses)
+├── .env
+└── server.js
+```
 
 ---
 
@@ -35,41 +48,29 @@ allbackend/
 ### Base URL
 
 ```
-/api/v1/customer
+/api/v1
 ```
+
+### Customers
+
+- `GET /customers` → Get all customers
+- `POST /customers` → Create customer
+- `DELETE /customers/:id` → Delete customer
+
+### Health
+
+- `GET /health` → Server status check
 
 ---
 
-### 1. Get All Customers
-
-```
-GET /
-```
-
----
-
-### 2. Create Customer
-
-```
-POST /
-```
-
-Body:
+## 📨 Request Example
 
 ```json
 {
-  "name": "John",
+  "name": "John Doe",
   "email": "john@example.com",
   "phone": "1234567890"
 }
-```
-
----
-
-### 3. Delete Customer
-
-```
-DELETE /:id
 ```
 
 ---
@@ -81,41 +82,45 @@ DELETE /:id
 ```json
 {
   "success": true,
-  "status": "success",
-  "message": "Success message",
+  "message": "Success",
   "data": {}
 }
 ```
-
----
 
 ### Error
 
 ```json
 {
   "success": false,
-  "status": "error",
   "message": "Error message",
-  "code": "ERROR_CODE",
-  "statusCode": 400,
-  "data": null
+  "code": "ERROR_CODE"
 }
 ```
 
 ---
 
-## 🔍 Health Check
+## ⚙️ Setup
 
+```bash
+npm install
+npm run dev
 ```
-GET /api/health
+
+Create `.env`:
+
+```env
+PORT=8000
 ```
 
 ---
 
 ## ⚠️ Notes
 
-- Data is stored in-memory (array)
-- No database integration
-- Suitable for learning & assignments
+- Uses **in-memory storage** (no database)
+- Easy to extend with DB (MongoDB, PostgreSQL)
 
 ---
+
+## 👨‍💻 Author
+
+Subroto chakraborty

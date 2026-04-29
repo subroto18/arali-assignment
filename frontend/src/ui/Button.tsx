@@ -11,7 +11,7 @@ const Button: React.FC<Props> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = "bg-blue-600 text-white px-4 py-2 rounded transition";
+  const baseStyles = "bg-primary text-white px-4 py-2 rounded transition";
 
   const stateStyles = loading
     ? "opacity-70 cursor-not-allowed"

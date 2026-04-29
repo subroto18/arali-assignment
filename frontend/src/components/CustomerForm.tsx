@@ -69,7 +69,9 @@ const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
 
   return (
     <div className="w-full max-w-md mx-auto p-5">
-      <h3 className="text-xl font-semibold mb-5 text-gray-800">Add Customer</h3>
+      <h3 className="text-xl font-semibold mb-5 text-neutral-800">
+        Add Customer
+      </h3>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {CUSTOMER_FORM_FIELDS.map((field) => (
@@ -88,7 +90,7 @@ const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
           <Button
             type="button"
             onClick={handleReset}
-            className="flex-1 bg-gray-400 text-gray-700 hover:bg-gray-200"
+            className="flex-1 bg-neutral-300 text-neutral-700 hover:bg-neutral-200"
           >
             Reset
           </Button>

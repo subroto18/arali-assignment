@@ -1,12 +1,31 @@
+import { THEME } from "../../config/theme";
+
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200 px-6 py-4 flex items-center justify-between text-sm text-gray-500">
-      <span>© {new Date().getFullYear()} Arali. All rights reserved.</span>
+    <footer className="bg-white border-t border-neutral-200 px-6 py-4 flex flex-col md:flex-row items-center justify-between text-sm text-neutral-500">
+      <span className="text-center md:text-left">
+        © {new Date().getFullYear()}{" "}
+        <a
+          href="https://araliventures.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`font-semibold transition ${THEME.text.primary}`}
+        >
+          Arali Ventures
+        </a>
+        . All rights reserved.
+      </span>
 
-      <div className="flex gap-4">
-        <span className="hover:text-gray-700 cursor-pointer">Privacy</span>
-        <span className="hover:text-gray-700 cursor-pointer">Terms</span>
-        <span className="hover:text-gray-700 cursor-pointer">Support</span>
+      <div className="flex items-center gap-1 mt-2 md:mt-0">
+        <span>Developed by</span>
+        <a
+          href="https://subroto-chakraborty.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`font-semibold transition ${THEME.text.primary}`}
+        >
+          Subroto Chakraborty
+        </a>
       </div>
     </footer>
   );

@@ -31,11 +31,7 @@ const ConfirmModal: React.FC<Props> = ({
             Cancel
           </Button>
 
-          <Button
-            loading={loading}
-            onClick={onConfirm}
-            className="px-3 py-1 rounded bg-danger text-neutral-700 hover:bg-danger-hover"
-          >
+          <Button loading={loading} onClick={onConfirm} className="bg-danger">
             Delete
           </Button>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { THEME } from "../config/theme";
+import { twMerge } from "tailwind-merge";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
@@ -26,7 +27,7 @@ const Button: React.FC<Props> = ({
     <button
       {...props}
       disabled={disabled || loading}
-      className={`${baseStyles} ${variantStyles} ${stateStyles} ${className}`}
+      className={twMerge(baseStyles, variantStyles, stateStyles, className)}
     >
       {loading ? (
         <span className="flex items-center gap-2">

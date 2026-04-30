@@ -1,6 +1,6 @@
 import fallback from "../assets/logo.svg";
 import type { ImgHTMLAttributes, SyntheticEvent } from "react";
-
+import { twMerge } from "tailwind-merge";
 type ImgProps = ImgHTMLAttributes<HTMLImageElement> & {
   src?: string;
 };
@@ -15,7 +15,7 @@ const Img = ({ src, alt = "image", className = "", ...props }: ImgProps) => {
       src={src || fallback}
       alt={alt}
       onError={handleError}
-      className={`object-contain ${className}`}
+      className={twMerge(`object-contain ${className}`)}
       {...props}
     />
   );

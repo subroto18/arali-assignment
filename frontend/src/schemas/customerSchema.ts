@@ -6,10 +6,8 @@ export const customerSchema = z.object({
   phone: z
     .string()
     .trim()
-    .min(1, "Phone is required")
-    .regex(/^[0-9]+$/, "Only digits allowed")
-    .min(10, "Phone must be 10 digits")
-    .max(10, "Phone must be 10 digits"),
+    .nonempty("Phone is required")
+    .regex(/^[6-9]\d{9}$/, "Enter a valid Indian mobile number"),
 });
 
 export type CustomerFormData = z.infer<typeof customerSchema>;

@@ -6,6 +6,7 @@ import Button from "../ui/Button";
 import Alert from "../ui/Alert";
 import CustomerForm from "../components/CustomerForm";
 import { useToast } from "../hooks/useToast";
+import type { CustomerFormData } from "../types/customer";
 
 const HomePage = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -36,7 +37,7 @@ const HomePage = () => {
     });
   };
 
-  const handleAddCustomer = async (form) => {
+  const handleAddCustomer = async (form: CustomerFormData) => {
     try {
       const data = await createCustomer(form);
       success(data.message || "Customer added successfully");
@@ -57,7 +58,6 @@ const HomePage = () => {
 
     try {
       const data = await removeCustomer(selectedId);
-      console.log(data, "data");
       success(data.message || "Customer deleted");
     } catch (err) {
       handleApiError(err);

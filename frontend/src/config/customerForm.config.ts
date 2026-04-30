@@ -1,4 +1,6 @@
-export const CUSTOMER_FORM_FIELDS = [
+import type { FieldConfig } from "../types/customer";
+
+export const CUSTOMER_FORM_FIELDS: FieldConfig[] = [
   {
     name: "name",
     label: "Name",

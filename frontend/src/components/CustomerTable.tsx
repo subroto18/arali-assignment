@@ -1,8 +1,15 @@
 import Button from "../ui/Button";
 import { CUSTOMER_TABLE_COLUMNS } from "../config/customerTable.config";
+import type { CustomerTableProps } from "../types/customer";
 import { truncate } from "../utils/string";
 const ACTION = "Action";
-const CustomerTable = ({ customers, onDelete, loading, error }) => {
+
+const CustomerTable: React.FC<CustomerTableProps> = ({
+  customers,
+  onDelete,
+  loading = false,
+  error = null,
+}) => {
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden">
       <div className="max-h-[70vh] overflow-y-auto">

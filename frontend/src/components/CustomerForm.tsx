@@ -3,11 +3,21 @@ import Button from "../ui/Button";
 import { customerSchema } from "../schemas/customerSchema";
 import FormField from "../ui/FormField";
 import { CUSTOMER_FORM_FIELDS } from "../config/customerForm.config";
+import type {
+  CustomerFormData,
+  CustomerFormProps,
+  FormErrors,
+} from "../types/customer";
 
-const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
-  const [errors, setErrors] = useState<Record<string, string>>({});
+const CustomerForm: React.FC<CustomerFormProps> = ({
+  onAdd,
+  formData,
+  setFormData,
+  loading = false,
+}) => {
+  const [errors, setErrors] = useState<FormErrors>({});
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const result = customerSchema.safeParse(formData);
@@ -15,13 +25,12 @@ const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
 
-      const formattedErrors = Object.keys(formData).reduce(
-        (acc, key) => {
-          acc[key] = fieldErrors[key]?.[0] || "";
-          return acc;
-        },
-        {} as Record<string, string>,
-      );
+      const formattedErrors = (
+        Object.keys(formData) as (keyof CustomerFormData)[]
+      ).reduce((acc, key) => {
+        acc[key] = fieldErrors[key]?.[0] || "";
+        return acc;
+      }, {} as FormErrors);
 
       setErrors(formattedErrors);
       return;
@@ -33,28 +42,28 @@ const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
+    const field = name as keyof CustomerFormData;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [field]: value,
     }));
 
-    validateField(name, value);
+    validateField(field, value);
   };
 
-  const validateField = (name: string, value: string) => {
+  const validateField = (name: keyof CustomerFormData, value: string) => {
     const result = customerSchema.safeParse({
       ...formData,
       [name]: value,
     });
 
-    const fieldErrors = result.success
+    const fieldError = result.success
       ? ""
       : result.error.flatten().fieldErrors[name]?.[0] || "";
 
     setErrors((prev) => ({
       ...prev,
-      [name]: fieldErrors,
+      [name]: fieldError,
     }));
   };
 

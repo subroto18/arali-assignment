@@ -28,6 +28,7 @@ A modern **React + TypeScript** app to manage customers with a clean UI and scal
 
 - Toast notifications (success/error)
 - Loading states
+- Dynamic Theme based color
 - Global error boundary
 - 404 Not Found page
 - Clean dashboard layout

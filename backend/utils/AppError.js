@@ -1,5 +1,5 @@
 const errorMap = require("./errorMap");
-class appError extends Error {
+class AppError extends Error {
   constructor(code, customMessage) {
     const err = errorMap[code];
     if (!err) {
@@ -15,4 +15,4 @@ class appError extends Error {
     this.code = code;
   }
 }
-module.exports = appError;
+module.exports = AppError;

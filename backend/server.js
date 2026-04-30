@@ -5,7 +5,7 @@ require("dotenv").config();
 const v1Routes = require("./routes/v1");
 const healthRoutes = require("./routes/healthRoutes");
 const errorHandler = require("./middleware/errorHandler");
-const AppError = require("./utils/appError");
+const AppError = require("./utils/AppError");
 
 const app = express();
 

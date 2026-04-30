@@ -1,7 +1,7 @@
 import Button from "../ui/Button";
 import { CUSTOMER_TABLE_COLUMNS } from "../config/customerTable.config";
 import type { CustomerTableProps } from "../types/customer";
-import { truncate } from "../utils/string";
+import { MAX_TRUNCATE_LENGTH } from "../utils/helper";
 const ACTION = "Action";
 
 const CustomerTable: React.FC<CustomerTableProps> = ({
@@ -49,10 +49,21 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
                   className="border-t border-neutral-200 hover:bg-neutral-50 transition"
                 >
                   <td className="p-3 text-neutral-500">{index + 1}</td>
-                  <td className="p-3 font-medium text-neutral-800">
-                    {truncate(c.name)}
+                  <td
+                    title={
+                      c.name.length > MAX_TRUNCATE_LENGTH ? c.name : undefined
+                    }
+                    className={`p-3 font-medium text-neutral-800  max-w-[${MAX_TRUNCATE_LENGTH}px] truncate`}
+                  >
+                    {c.name}
                   </td>
-                  <td className="p-3 text-neutral-600">{truncate(c.email)}</td>
+
+                  <td
+                    title={c.email}
+                    className={`p-3 font-medium text-neutral-800  max-w-[${MAX_TRUNCATE_LENGTH}px] truncate`}
+                  >
+                    {c.email}
+                  </td>
                   <td className="p-3 text-neutral-600">{c.phone}</td>
                   <td className="p-3 text-center">
                     <Button

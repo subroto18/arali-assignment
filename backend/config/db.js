@@ -6,7 +6,7 @@ const db = {
   getCustomers: () => customers,
 
   addCustomer: (customer) => {
-    customers.push(customer);
+    customers.unshift(customer);
     return customer;
   },
   deleteCustomer: (id) => {

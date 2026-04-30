@@ -51,14 +51,16 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
                   <td className="p-3 text-neutral-500">{index + 1}</td>
                   <td
                     title={c.name}
-                    className={`p-3 font-medium text-neutral-800  max-w-[${MAX_TRUNCATE_LENGTH}px] truncate`}
+                    style={{ maxWidth: `${MAX_TRUNCATE_LENGTH}px` }}
+                    className={`p-3 font-medium text-neutral-800   truncate`}
                   >
                     {c.name}
                   </td>
 
                   <td
                     title={c.email}
-                    className={`p-3 font-medium text-neutral-800  max-w-[${MAX_TRUNCATE_LENGTH}px] truncate`}
+                    style={{ maxWidth: `${MAX_TRUNCATE_LENGTH}px` }}
+                    className={`p-3 font-medium text-neutral-800   truncate`}
                   >
                     {c.email}
                   </td>

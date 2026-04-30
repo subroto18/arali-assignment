@@ -1,4 +1,5 @@
-const AppError = require("../utils/appError");
+const appError = require("../utils/appError");
+
 let customers = [];
 
 const db = {
@@ -12,7 +13,7 @@ const db = {
     const exists = customers.find((item) => item.id == id);
 
     if (!exists) {
-      throw new AppError("CUSTOMER_NOT_FOUND");
+      throw new appError("CUSTOMER_NOT_FOUND");
     }
 
     let res = customers.filter((c) => c.id !== id);

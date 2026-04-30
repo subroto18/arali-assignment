@@ -1,8 +1,9 @@
 const db = require("../config/db");
-const AppError = require("../utils/appError");
+
 const { v4: uuidv4 } = require("uuid");
 const asyncHandler = require("../utils/asyncHandler");
 const sendResponse = require("../utils/responseHandler");
+const appError = require("../utils/appError");
 
 const addCustomer = asyncHandler((req, res) => {
   const { name, email, phone } = req.body;
@@ -26,7 +27,7 @@ const deleteCustomer = asyncHandler((req, res, next) => {
   const { id } = req.params;
 
   if (!id) {
-    return next(new AppError("CUSTOMER_NOT_FOUND"));
+    return next(new appError("CUSTOMER_NOT_FOUND"));
   }
   const customers = db.deleteCustomer(id);
 

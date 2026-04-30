@@ -27,10 +27,7 @@ const ConfirmModal: React.FC<Props> = ({
         <p className="text-sm text-neutral-600 mb-4">{message}</p>
 
         <div className="flex justify-end gap-2">
-          <Button
-            onClick={onCancel}
-            className="px-3 py-1 rounded bg-neutral-50 text-grey-700 hover:bg-neutral-300"
-          >
+          <Button onClick={onCancel} variant="secondary">
             Cancel
           </Button>
 

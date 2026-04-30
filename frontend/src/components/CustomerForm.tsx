@@ -8,6 +8,7 @@ import type {
   CustomerFormProps,
   FormErrors,
 } from "../types/customer";
+import { THEME } from "../config/theme";
 
 const CustomerForm: React.FC<CustomerFormProps> = ({
   onAdd,
@@ -99,7 +100,8 @@ const CustomerForm: React.FC<CustomerFormProps> = ({
           <Button
             type="button"
             onClick={handleReset}
-            className="flex-1 bg-neutral-300 text-grey-700 hover:bg-neutral-200"
+            variant="secondary"
+            className={`flex-1 ${THEME.button.secondary}`}
           >
             Reset
           </Button>

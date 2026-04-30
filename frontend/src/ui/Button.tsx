@@ -1,7 +1,9 @@
 import React from "react";
+import { THEME } from "../config/theme";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
+  variant?: "primary" | "secondary" | "danger";
 };
 
 const Button: React.FC<Props> = ({
@@ -9,18 +11,22 @@ const Button: React.FC<Props> = ({
   className = "",
   loading = false,
   disabled,
+  variant = "primary",
   ...props
 }) => {
-  const baseStyles = "bg-primary text-white px-4 py-2 rounded transition";
+  const baseStyles = "px-4 py-2 rounded transition";
+
+  const variantStyles = THEME.button[variant];
+
   const stateStyles = loading
     ? "opacity-70 cursor-not-allowed"
-    : "hover:bg-primary-600 cursor-pointer";
+    : "cursor-pointer";
 
   return (
     <button
       {...props}
       disabled={disabled || loading}
-      className={`${baseStyles} ${stateStyles} ${className}`}
+      className={`${baseStyles} ${variantStyles} ${stateStyles} ${className}`}
     >
       {loading ? (
         <span className="flex items-center gap-2">

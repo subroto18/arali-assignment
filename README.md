@@ -41,4 +41,4 @@ Node.js + Express REST API with validation and error handling.
 
 ## 👨‍💻 Author
 
-Built as part of a Full Stack Developer assignment.
+Subroto Chakraborty

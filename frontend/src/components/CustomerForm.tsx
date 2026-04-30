@@ -90,7 +90,7 @@ const CustomerForm = ({ onAdd, formData, setFormData, loading = false }) => {
           <Button
             type="button"
             onClick={handleReset}
-            className="flex-1 bg-neutral-300 text-neutral-700 hover:bg-neutral-200"
+            className="flex-1 bg-neutral-300 text-grey-700 hover:bg-neutral-200"
           >
             Reset
           </Button>

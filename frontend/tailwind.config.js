@@ -17,7 +17,7 @@ export default {
           800: "#4d000c",
           900: "#2b0006",
         },
-        // ⚪ Neutral (UI text, borders, backgrounds)
+
         neutral: {
           50: "#f9fafb",
           100: "#f3f4f6",

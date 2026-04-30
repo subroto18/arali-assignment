@@ -29,7 +29,7 @@ const ConfirmModal: React.FC<Props> = ({
         <div className="flex justify-end gap-2">
           <Button
             onClick={onCancel}
-            className="px-3 py-1 rounded bg-neutral-200 text-neutral-700 hover:bg-neutral-300"
+            className="px-3 py-1 rounded bg-neutral-50 text-grey-700 hover:bg-neutral-300"
           >
             Cancel
           </Button>
@@ -37,7 +37,7 @@ const ConfirmModal: React.FC<Props> = ({
           <Button
             loading={loading}
             onClick={onConfirm}
-            className="px-3 py-1 rounded bg-danger text-white hover:bg-danger-hover"
+            className="px-3 py-1 rounded bg-danger text-neutral-700 hover:bg-danger-hover"
           >
             Delete
           </Button>

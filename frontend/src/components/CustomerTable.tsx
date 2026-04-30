@@ -50,9 +50,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
                 >
                   <td className="p-3 text-neutral-500">{index + 1}</td>
                   <td
-                    title={
-                      c.name.length > MAX_TRUNCATE_LENGTH ? c.name : undefined
-                    }
+                    title={c.name}
                     className={`p-3 font-medium text-neutral-800  max-w-[${MAX_TRUNCATE_LENGTH}px] truncate`}
                   >
                     {c.name}

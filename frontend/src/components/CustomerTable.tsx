@@ -1,7 +1,9 @@
+import { memo } from "react";
 import Button from "../ui/Button";
 import { CUSTOMER_TABLE_COLUMNS } from "../config/customerTable.config";
 import type { CustomerTableProps } from "../types/customer";
 import { MAX_TRUNCATE_LENGTH } from "../utils/helper";
+import React from "react";
 const ACTION = "Action";
 
 const CustomerTable: React.FC<CustomerTableProps> = ({
@@ -94,4 +96,4 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
   );
 };
 
-export default CustomerTable;
+export default memo(CustomerTable);

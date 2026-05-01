@@ -30,7 +30,6 @@ const ConfirmModal: React.FC<Props> = ({
           <Button onClick={onCancel} variant="secondary">
             Cancel
           </Button>
-
           <Button loading={loading} onClick={onConfirm} className="bg-danger">
             Delete
           </Button>

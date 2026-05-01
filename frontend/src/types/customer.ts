@@ -31,6 +31,7 @@ export type CustomerTableProps = {
 
 export type CustomerFormProps = {
   onAdd: (data: CustomerFormData) => void;
+  resetForm: () => void;
   formData: CustomerFormData;
   setFormData: React.Dispatch<React.SetStateAction<CustomerFormData>>;
   loading?: boolean;

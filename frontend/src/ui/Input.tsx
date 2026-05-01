@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 const Input = ({ className = "", ...props }) => {
   return (
@@ -10,4 +11,4 @@ const Input = ({ className = "", ...props }) => {
   );
 };
 
-export default Input;
+export default memo(Input);

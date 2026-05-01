@@ -12,6 +12,7 @@ import { THEME } from "../config/theme";
 
 const CustomerForm: React.FC<CustomerFormProps> = ({
   onAdd,
+  resetForm,
   formData,
   setFormData,
   loading = false,
@@ -69,11 +70,7 @@ const CustomerForm: React.FC<CustomerFormProps> = ({
   };
 
   const handleReset = () => {
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-    });
+    resetForm();
     setErrors({});
   };
 
